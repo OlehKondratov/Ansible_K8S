@@ -1,0 +1,54 @@
+all:
+  children:
+    master:
+      hosts:
+        rabbit-1-1:
+          ansible_connection: ssh
+          ansible_host: 10.91.65.12
+          ansible_user: root
+        rabbit-3-1:
+          ansible_connection: ssh
+          ansible_host: 10.91.65.28
+          ansible_user: root
+    works:
+      hosts:
+        rabbit-1-2:
+          ansible_connection: ssh
+          ansible_host: 10.91.65.18
+          ansible_user: root
+        rabbit-1-3:
+          ansible_connection: ssh
+          ansible_host: 10.91.65.14
+          ansible_user: root
+        rabbit-1-4:
+          ansible_connection: ssh
+          ansible_host: 10.91.65.16
+          ansible_user: root
+        rabbit-2-1:
+          ansible_connection: ssh
+          ansible_host: 10.91.65.20
+          ansible_user: root
+        rabbit-2-2:
+          ansible_connection: ssh
+          ansible_host: 10.91.65.22
+          ansible_user: root
+        rabbit-3-2:
+          ansible_connection: ssh
+          ansible_host: 10.91.65.30
+          ansible_user: root
+        rabbit-3-3:
+          ansible_connection: ssh
+          ansible_host: 10.91.65.32
+          ansible_user: root
+        rabbit-3-4:
+          ansible_connection: ssh
+          ansible_host: 10.91.65.34
+          ansible_user: root
+        rabbit-4-1:
+          ansible_connection: ssh
+          ansible_host: 10.91.65.36
+          ansible_user: root
+        rabbit-4-2:
+          ansible_connection: ssh
+          ansible_host: 10.91.65.38
+          ansible_user: root

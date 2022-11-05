@@ -1,0 +1,36 @@
+
+[clst1]
+    192.168.20.50     kube00.crsm.igk.intel.com 
+    192.168.20.51     kube01.crsm.igk.intel.com 
+    192.168.20.52     kube02.crsm.igk.intel.com 
+    192.168.20.53     kube03.crsm.igk.intel.com 
+    192.168.20.54     kube04.crsm.igk.intel.com 
+    192.168.20.55     kube05.crsm.igk.intel.com 
+    192.168.20.56     kube06.crsm.igk.intel.com 
+
+[clst2]
+    192.168.20.57     kube07.crsm.igk.intel.com 
+    192.168.20.58     kube08.crsm.igk.intel.com 
+    192.168.20.59     kube09.crsm.igk.intel.com 
+    192.168.20.60     kube10.crsm.igk.intel.com 
+    192.168.20.61     kube11.crsm.igk.intel.com 
+    192.168.20.62     kube12.crsm.igk.intel.com 
+    192.168.20.63     kube13.crsm.igk.intel.com 
+    192.168.20.64     kube14.crsm.igk.intel.com 
+    192.168.20.65     kube15.crsm.igk.intel.com 
+    192.168.20.66     kube16.crsm.igk.intel.com 
+    192.168.20.67     kube17.crsm.igk.intel.com 
+    192.168.20.68     kube18.crsm.igk.intel.com 
+    192.168.20.69     kube19.crsm.igk.intel.com 
+    192.168.20.72     kube20.crsm.igk.intel.com 
+
+[clst4]
+    192.168.20.81     kube21.crsm.igk.intel.com 
+    192.168.20.82     kube22.crsm.igk.intel.com 
+    192.168.20.83     kube23.crsm.igk.intel.com 
+    192.168.20.84     kube24.crsm.igk.intel.com 
+    192.168.20.85     kube25.crsm.igk.intel.com 
+    192.168.20.86     kube26.crsm.igk.intel.com 
+    192.168.20.87     kube27.crsm.igk.intel.com
+    192.168.20.88     kube28.crsm.igk.intel.com
+    192.168.20.89     kube29.crsm.igk.intel.com  

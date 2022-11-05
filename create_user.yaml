@@ -1,10 +1,10 @@
 ---
-- hosts: users
+- hosts: work
   become: yes
 
   vars_prompt:
 
-   - name: "new_user"
+   - name: "ansible"
      prompt: "Account need to be create in remote server."
      private: no
 

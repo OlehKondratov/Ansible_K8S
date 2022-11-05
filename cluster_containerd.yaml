@@ -7,8 +7,28 @@
   gather_facts: yes
   connection: ssh
   
+    vars:
+    ntp_server: corp.intel.com
+    proxy_env:
+      http_proxy: http://proxy-dmz.intel.com:912
+      https_proxy: http://proxy-dmz.intel.com:912
+      no_proxy: localhost,intel.com,10.91.30.0/23,10.1.0.0/16,10.152.183.0/24,10.91.64.0/22,172.16.38.0/22,172.16.40.0/22,127.0.0.1 
+    os_environment:
+      - key: EDITOR
+        value: /usr/bin/nano
+      - key: HISTTIMEFORMAT
+        value: "%F %T"
+
+
   tasks:
-   
+   - name: customize /etc/environment
+     ansible.builtin.lineinfile:
+        dest: "/etc/environment"
+        state: present
+        regexp: "^{{ item.key }}="
+        line: "{{ item.key }}={{ item.value }}"
+     with_items: "{{ os_environment }}"
+  
    - name: Make the Swap inactive
      command: swapoff -a
 
@@ -27,12 +47,33 @@
          - gnupg-agent
          - vim
          - software-properties-common
+         - ntpsec-ntpdate
+         - ntpdate
        state: present
+
+   - name: Install Python
+     raw: apt -y update && apt install -y python3-minimal
+     when: check_python.rc != 0
 
    - name: Add Docker’s official GPG key
      apt_key:
        url: https://download.docker.com/linux/ubuntu/gpg
        state: present
+
+   - name: Create directory for docker proxy settings
+     become: true
+     shell: |
+        mkdir -p /etc/systemd/system/docker.service.d
+        echo >/etc/systemd/system/docker.service.d/http-proxy.conf Environment="HTTP_PROXY=$http_proxy"
+        echo >>/etc/systemd/system/docker.service.d/http-proxy.conf Environment="HTTP_PROXY=$http_proxy"
+        echo >>/etc/systemd/system/docker.service.d/http-proxy.conf Environment="NO_PROXY=$no_proxy"
+
+   - name: Create directory for docker proxy settings
+     become: true
+     shell: | 
+        systemctl set-environment HTTP_PROXY=http://proxy-dmz.intel.com:912 
+        systemctl set-environment HTTPS_PROXY=http://proxy-dmz.intel.com:912 
+        systemctl set-environment NO_PROXY=localhost,intel.com,10.91.30.0/23,10.1.0.0/16,10.152.183.0/24,10.91.64.0/22,172.16.38.0/22,172.16.40.0/22,127.0.0.1 
 
    - name: Add Docker Repository
      apt_repository:
@@ -88,7 +129,7 @@
 
    - pause: seconds=20
 
-- hosts: masters
+- hosts: master
   remote_user: ansible
   become: yes
   become_method: sudo
