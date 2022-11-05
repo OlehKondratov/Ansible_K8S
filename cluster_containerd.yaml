@@ -7,7 +7,7 @@
   gather_facts: yes
   connection: ssh
   
-    vars:
+  vars:
     ntp_server: corp.intel.com
     proxy_env:
       http_proxy: http://proxy-dmz.intel.com:912
